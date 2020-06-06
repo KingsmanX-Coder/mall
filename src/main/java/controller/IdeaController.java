@@ -1,9 +1,9 @@
 /**
  * Copyright (C), 2020-2020
- * FileName: Controller
+ * FileName: IdeaController
  * Author:   Kingsman
- * Date:     2020/6/6 14:55
- * Description: 启动器
+ * Date:     2020/6/6 15:02
+ * Description: test
  */
 
 package controller;
@@ -11,17 +11,17 @@ package controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-public class Controller {
+public class IdeaController {
     @GetMapping("/info")
     @ResponseBody
     public String getInfoFromIdea(){
-        return "this is a spring boot project from idea for test";
+        return "this is a spring boot project test";
     }
 }
 
 /**
  * 〈一句话功能简述〉<br> 
- * 〈启动器〉
+ * 〈test〉
  *
  * @author Kingsman
  * @create 2020/6/6
