@@ -8,8 +8,10 @@
 
 package com.mall.mall.dao;
 
+import com.mall.mall.entity.Carousel;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 
 
 public interface CarouselMapper {

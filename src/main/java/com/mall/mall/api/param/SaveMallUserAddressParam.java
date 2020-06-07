@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-class SaveMallUserAddressParam {
+public class SaveMallUserAddressParam {
 
     @ApiModelProperty("收件人名称")
     private String userName;

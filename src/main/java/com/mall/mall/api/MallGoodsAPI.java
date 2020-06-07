@@ -9,6 +9,15 @@
 package com.mall.mall.api;
 
 
+import com.mall.mall.api.vo.MallGoodsDetailVO;
+import com.mall.mall.api.vo.MallSearchGoodsVO;
+import com.mall.mall.common.Constants;
+import com.mall.mall.common.MallException;
+import com.mall.mall.common.ServiceResultEnum;
+import com.mall.mall.config.annotation.TokenToMallUser;
+import com.mall.mall.entity.MallGoods;
+import com.mall.mall.entity.MallUser;
+import com.mall.mall.service.MallGoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -20,6 +29,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.xml.transform.Result;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -30,15 +40,15 @@ public class MallGoodsAPI {
     private static final Logger logger = LoggerFactory.getLogger(MallGoodsAPI.class);
 
     @Resource
-    private MallGoodsService MallGoodsService;
+    private com.mall.mall.service.MallGoodsService MallGoodsService;
 
     @GetMapping("/search")
     @ApiOperation(value = "商品搜索接口",notes = "根据关键字和分类ID进行搜索")
     public Result<PageResult<List<MallSearchGoodsVO>>> search(@RequestParam(required = false) @ApiParam(value = "搜索关键字") String keyword,
-                                                                    @RequestParam(required = false) @ApiParam(value = "分类id") Long goodsCategoryId,
-                                                                    @RequestParam(required = false) @ApiParam(value = "orderBy") String orderBy,
-                                                                    @RequestParam(required = false) @ApiParam(value = "页码") Integer pageNumber,
-                                                                    @TokenToMallUser MallUser loginMallUser) {
+                                                              @RequestParam(required = false) @ApiParam(value = "分类id") Long goodsCategoryId,
+                                                              @RequestParam(required = false) @ApiParam(value = "orderBy") String orderBy,
+                                                              @RequestParam(required = false) @ApiParam(value = "页码") Integer pageNumber,
+                                                              @TokenToMallUser MallUser loginMallUser) {
 
         logger.info("goods search api,keyword={},goodsCategoryId={},orderBy={},pageNumber={},userId={}", keyword, goodsCategoryId, orderBy, pageNumber, loginMallUser.getUserId());
 

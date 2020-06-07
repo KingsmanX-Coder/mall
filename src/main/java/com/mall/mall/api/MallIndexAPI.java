@@ -8,6 +8,13 @@
 
 package com.mall.mall.api;
 
+import com.mall.mall.api.vo.IndexInfoVO;
+import com.mall.mall.api.vo.MallIndexCarouselVO;
+import com.mall.mall.api.vo.MallIndexConfigGoodsVO;
+import com.mall.mall.common.Constants;
+import com.mall.mall.common.IndexConfigTypeEnum;
+import com.mall.mall.service.MallCarouselService;
+import com.mall.mall.service.MallIndexConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @Api(value = "v1", tags = "1.商城首页接口")

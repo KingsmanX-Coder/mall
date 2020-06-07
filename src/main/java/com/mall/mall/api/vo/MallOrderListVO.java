@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-class MallOrderListVO implements Serializable {
+public class MallOrderListVO implements Serializable {
 
     private Long orderId;
 

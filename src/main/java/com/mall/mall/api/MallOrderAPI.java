@@ -8,6 +8,19 @@
 
 package com.mall.mall.api;
 
+import com.mall.mall.api.param.SaveOrderParam;
+import com.mall.mall.api.vo.MallOrderDetailVO;
+import com.mall.mall.api.vo.MallOrderListVO;
+import com.mall.mall.api.vo.MallShoppingCartItemVO;
+import com.mall.mall.common.Constants;
+import com.mall.mall.common.MallException;
+import com.mall.mall.common.ServiceResultEnum;
+import com.mall.mall.config.annotation.TokenToMallUser;
+import com.mall.mall.entity.MallUser;
+import com.mall.mall.entity.MallUserAddress;
+import com.mall.mall.service.MallOrderService;
+import com.mall.mall.service.MallShoppingCartService;
+import com.mall.mall.service.MallUserAddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -17,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -24,11 +38,11 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 public class MallOrderAPI {
     @Resource
-    private MallShoppingCartService MallShoppingCartService;
+    private com.mall.mall.service.MallShoppingCartService MallShoppingCartService;
     @Resource
-    private MallOrderService MallOrderService;
+    private com.mall.mall.service.MallOrderService MallOrderService;
     @Resource
-    private MallUserAddressService MallUserAddressService;
+    private com.mall.mall.service.MallUserAddressService MallUserAddressService;
 
     @PostMapping("/saveOrder")
     @ApiOperation(value = "生成订单接口", notes = "传参为地址id和待结算的购物项id数组")
@@ -74,8 +88,8 @@ public class MallOrderAPI {
     @GetMapping("/order")
     @ApiOperation(value = "订单列表接口", notes = "传参为页码")
     public Result<PageResult<List<MallOrderListVO>>> orderList(@ApiParam(value = "页码") @RequestParam(required = false) Integer pageNumber,
-                                                                     @ApiParam(value = "订单状态:0.待支付 1.待确认 2.待发货 3:已发货 4.交易成功") @RequestParam(required = false) Integer status,
-                                                                     @TokenToMallUser MallUser loginMallUser) {
+                                                               @ApiParam(value = "订单状态:0.待支付 1.待确认 2.待发货 3:已发货 4.交易成功") @RequestParam(required = false) Integer status,
+                                                               @TokenToMallUser MallUser loginMallUser) {
         Map params = new HashMap(4);
         if (pageNumber == null || pageNumber < 1) {
             pageNumber = 1;

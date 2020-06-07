@@ -14,7 +14,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-class MallUserUpdateParam implements Serializable {
+public class MallUserUpdateParam implements Serializable {
 
     @ApiModelProperty("用户昵称")
     private String nickName;

@@ -9,6 +9,9 @@
 package com.mall.mall.api;
 
 
+import com.mall.mall.api.vo.MallIndexCategoryVO;
+import com.mall.mall.common.MallException;
+import com.mall.mall.common.ServiceResultEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.util.CollectionUtils;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @Api(value = "v1", tags = "3.商城分类页面接口")
@@ -24,7 +28,7 @@ import javax.annotation.Resource;
 public class MallGoodsCategoryAPI {
 
     @Resource
-    private MallCategoryService MallCategoryService;
+    private com.mall.mall.service.MallCategoryService MallCategoryService;
 
     @GetMapping("/categories")
     @ApiOperation(value = "获取分类数据", notes = "分类页面使用")
