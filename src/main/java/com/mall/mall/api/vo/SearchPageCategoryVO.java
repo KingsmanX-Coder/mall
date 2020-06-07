@@ -8,6 +8,8 @@
 
 package com.mall.mall.api.vo;
 
+import com.mall.mall.entity.GoodsCategory;
+
 import java.io.Serializable;
 import java.util.List;
 

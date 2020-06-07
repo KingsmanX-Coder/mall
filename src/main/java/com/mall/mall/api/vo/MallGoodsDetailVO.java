@@ -14,7 +14,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-class MallGoodsDetailVO implements Serializable {
+public class MallGoodsDetailVO implements Serializable {
 
     @ApiModelProperty("商品id")
     private Long goodsId;
