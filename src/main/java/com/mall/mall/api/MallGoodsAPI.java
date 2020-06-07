@@ -9,8 +9,12 @@
 package com.mall.mall.api;
 
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -29,7 +33,7 @@ public class MallGoodsAPI {
     private MallGoodsService MallGoodsService;
 
     @GetMapping("/search")
-    @ApiOperation(value = "商品搜索接口",notes = "根据关键字和分类ID进行搜索")；
+    @ApiOperation(value = "商品搜索接口",notes = "根据关键字和分类ID进行搜索")
     public Result<PageResult<List<MallSearchGoodsVO>>> search(@RequestParam(required = false) @ApiParam(value = "搜索关键字") String keyword,
                                                                     @RequestParam(required = false) @ApiParam(value = "分类id") Long goodsCategoryId,
                                                                     @RequestParam(required = false) @ApiParam(value = "orderBy") String orderBy,
@@ -41,7 +45,7 @@ public class MallGoodsAPI {
         Map params = new HashMap(4);
         //两个搜索参数都为空，直接返回异常
         if (goodsCategoryId == null && StringUtils.isEmpty(keyword)) {
-            NewBeeMallException.fail("非法的搜索参数");
+          MallException.fail("非法的搜索参数");
         }
         if (pageNumber == null || pageNumber < 1) {
             pageNumber = 1;
