@@ -8,6 +8,7 @@
 
 package com.mall.mall.dao;
 
+import com.mall.mall.entity.MallOrderItem;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
