@@ -13,7 +13,6 @@ import com.mall.mall.common.MallException;
 import com.mall.mall.common.ServiceResultEnum;
 import com.mall.mall.config.annotation.TokenToMallUser;
 import com.mall.mall.dao.MallUserMapper;
-import com.mall.mall.dao.MallUserTokenMapper;
 import com.mall.mall.entity.MallUser;
 import com.mall.mall.entity.MallUserToken;
 import org.springframework.beans.factory.annotation.Autowired;

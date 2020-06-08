@@ -32,10 +32,10 @@ import java.util.List;
 public class MallIndexAPI {
 
     @Resource
-    private MallCarouselService newBeeMallCarouselService;
+    private MallCarouselService MallCarouselService;
 
     @Resource
-    private MallIndexConfigService newBeeMallIndexConfigService;
+    private MallIndexConfigService MallIndexConfigService;
 
     @GetMapping("/index-infos")
     @ApiOperation(value = "获取首页数据", notes = "轮播图、新品、推荐等")

@@ -19,9 +19,9 @@ import com.mall.mall.entity.MallUserToken;
 import com.mall.mall.service.MallUserService;
 import com.mall.mall.util.MD5Util;
 import com.mall.mall.util.NumberUtil;
+import com.mall.mall.util.SystemUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.plugin2.util.SystemUtil;
 
 import java.util.Date;
 

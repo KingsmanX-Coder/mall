@@ -48,7 +48,7 @@ public class MallOrderDetailVO implements Serializable {
     private Date createTime;
 
     @ApiModelProperty("订单项列表")
-    private List<MallOrderItemVO> newBeeMallOrderItemVOS;
+    private List<MallOrderItemVO> MallOrderItemVOS;
 }
 
 /**

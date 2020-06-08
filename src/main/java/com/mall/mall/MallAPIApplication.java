@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 
-@MapperScan("com.com.mall.dao")
+@MapperScan("com.mall.mall.dao")
 @SpringBootApplication
 public class MallAPIApplication {
 
