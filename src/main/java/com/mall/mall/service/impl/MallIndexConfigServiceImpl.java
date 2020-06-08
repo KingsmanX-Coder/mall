@@ -14,6 +14,7 @@ import com.mall.mall.dao.MallGoodsMapper;
 import com.mall.mall.entity.IndexConfig;
 import com.mall.mall.entity.MallGoods;
 import com.mall.mall.service.MallIndexConfigService;
+import com.mall.mall.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

@@ -12,6 +12,9 @@ import com.mall.mall.api.vo.MallSearchGoodsVO;
 import com.mall.mall.dao.MallGoodsMapper;
 import com.mall.mall.entity.MallGoods;
 import com.mall.mall.service.MallGoodsService;
+import com.mall.mall.util.BeanUtil;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -51,7 +54,7 @@ public class MallGoodsServiceImpl implements MallGoodsService {
                 }
             }
         }
-        PageResult pageResult = new PageResult(newBeeMallSearchGoodsVOS, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(MallSearchGoodsVOS, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;
     }
 }

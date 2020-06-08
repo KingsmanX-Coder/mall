@@ -17,12 +17,14 @@ import com.mall.mall.common.ServiceResultEnum;
 import com.mall.mall.dao.GoodsCategoryMapper;
 import com.mall.mall.entity.GoodsCategory;
 import com.mall.mall.service.MallCategoryService;
+import com.mall.mall.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 

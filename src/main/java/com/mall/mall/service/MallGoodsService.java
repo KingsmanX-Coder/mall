@@ -9,11 +9,13 @@
 package com.mall.mall.service;
 
 import com.mall.mall.entity.MallGoods;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
 
 public interface MallGoodsService {
 
 
-    MallGoods getMallGoodsById(Long id);
+    MallGoods getMallGoodsById (Long id);
 
 
     PageResult searchMallGoods(PageQueryUtil pageUtil);

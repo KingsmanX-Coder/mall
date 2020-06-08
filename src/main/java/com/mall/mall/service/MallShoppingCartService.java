@@ -12,6 +12,8 @@ import com.mall.mall.api.param.SaveCartItemParam;
 import com.mall.mall.api.param.UpdateCartItemParam;
 import com.mall.mall.api.vo.MallShoppingCartItemVO;
 import com.mall.mall.entity.MallShoppingCartItem;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
 
 import java.util.List;
 

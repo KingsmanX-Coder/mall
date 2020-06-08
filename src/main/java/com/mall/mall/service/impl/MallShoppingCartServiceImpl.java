@@ -19,14 +19,14 @@ import com.mall.mall.dao.MallShoppingCartItemMapper;
 import com.mall.mall.entity.MallGoods;
 import com.mall.mall.entity.MallShoppingCartItem;
 import com.mall.mall.service.MallShoppingCartService;
+import com.mall.mall.util.BeanUtil;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -172,7 +172,7 @@ public class MallShoppingCartServiceImpl implements MallShoppingCartService {
     public PageResult getMyShoppingCartItems(PageQueryUtil pageUtil) {
         List<MallShoppingCartItemVO> MallShoppingCartItemVOS = new ArrayList<>();
         List<MallShoppingCartItem> MallShoppingCartItems = MallShoppingCartItemMapper.findMyMallCartItems(pageUtil);
-        int total = MallShoppingCartItemMapper.getTotalMyNewBeeMallCartItems(pageUtil);
+        int total = MallShoppingCartItemMapper.getTotalMyMallCartItems(pageUtil);
         PageResult pageResult = new PageResult(getMallShoppingCartItemVOS(MallShoppingCartItemVOS, MallShoppingCartItems), total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;
     }

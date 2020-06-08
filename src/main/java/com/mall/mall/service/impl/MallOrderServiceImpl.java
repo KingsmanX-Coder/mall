@@ -16,6 +16,10 @@ import com.mall.mall.common.*;
 import com.mall.mall.dao.*;
 import com.mall.mall.entity.*;
 import com.mall.mall.service.MallOrderService;
+import com.mall.mall.util.BeanUtil;
+import com.mall.mall.util.NumberUtil;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +30,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
-public class NewBeeMallOrderServiceImpl implements MallOrderService {
+public class MallOrderServiceImpl implements MallOrderService {
 
     @Autowired
     private MallOrderMapper MallOrderMapper;

@@ -14,6 +14,7 @@ import com.mall.mall.common.ServiceResultEnum;
 import com.mall.mall.dao.MallUserAddressMapper;
 import com.mall.mall.entity.MallUserAddress;
 import com.mall.mall.service.MallUserAddressService;
+import com.mall.mall.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,7 +69,7 @@ public class MallUserAddressServiceImpl implements MallUserAddressService {
                 int updateResult = userAddressMapper.updateByPrimaryKeySelective(defaultAddress);
                 if (updateResult < 1) {
                     //未更新成功
-                    NewBeeMallException.fail(ServiceResultEnum.DB_ERROR.getResult());
+                    MallException.fail(ServiceResultEnum.DB_ERROR.getResult());
                 }
             }
         }

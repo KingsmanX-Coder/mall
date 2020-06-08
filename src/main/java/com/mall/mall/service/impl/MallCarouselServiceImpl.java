@@ -12,6 +12,7 @@ import com.mall.mall.api.vo.MallIndexCarouselVO;
 import com.mall.mall.dao.CarouselMapper;
 import com.mall.mall.entity.Carousel;
 import com.mall.mall.service.MallCarouselService;
+import com.mall.mall.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

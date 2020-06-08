@@ -12,6 +12,8 @@ import com.mall.mall.api.vo.MallOrderDetailVO;
 import com.mall.mall.api.vo.MallShoppingCartItemVO;
 import com.mall.mall.entity.MallUser;
 import com.mall.mall.entity.MallUserAddress;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
 
 import java.util.List;
 
