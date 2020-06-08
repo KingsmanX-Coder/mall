@@ -10,6 +10,7 @@ package com.mall.mall.config;
 
 import com.mall.mall.common.MallException;
 import com.mall.mall.common.ServiceResultEnum;
+import com.mall.mall.util.Result;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;

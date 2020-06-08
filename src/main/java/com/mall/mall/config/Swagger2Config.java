@@ -8,6 +8,7 @@
 
 package com.mall.mall.config;
 
+import com.mall.mall.entity.MallUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -42,7 +43,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .ignoredParameterTypes(MallUser.class)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("ltd.newbee.mall.api"))// 修改为自己的 controller 包路径
+                .apis(RequestHandlerSelectors.basePackage("com.mall.mall.api"))// 修改为自己的 controller 包路径
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(swaggerParams);

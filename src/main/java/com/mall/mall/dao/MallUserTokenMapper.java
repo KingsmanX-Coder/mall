@@ -8,6 +8,8 @@
 
 package com.mall.mall.dao;
 
+import com.mall.mall.entity.MallUserToken;
+
 public interface MallUserTokenMapper {
     int deleteByPrimaryKey(Long userId);
 

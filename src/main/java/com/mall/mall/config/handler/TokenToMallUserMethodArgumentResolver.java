@@ -12,6 +12,10 @@ import com.mall.mall.common.Constants;
 import com.mall.mall.common.MallException;
 import com.mall.mall.common.ServiceResultEnum;
 import com.mall.mall.config.annotation.TokenToMallUser;
+import com.mall.mall.dao.MallUserMapper;
+import com.mall.mall.dao.MallUserTokenMapper;
+import com.mall.mall.entity.MallUser;
+import com.mall.mall.entity.MallUserToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
@@ -29,7 +33,7 @@ public class TokenToMallUserMethodArgumentResolver implements HandlerMethodArgum
     @Autowired
     private MallUserMapper mallUserMapper;
     @Autowired
-    private MallUserTokenMapper MallUserTokenMapper;
+    private com.mall.mall.dao.MallUserTokenMapper MallUserTokenMapper;
 
     public TokenToMallUserMethodArgumentResolver() {
     }

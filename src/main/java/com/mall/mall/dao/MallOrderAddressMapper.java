@@ -8,6 +8,8 @@
 
 package com.mall.mall.dao;
 
+import com.mall.mall.entity.MallOrderAddress;
+
 public interface MallOrderAddressMapper {
     int deleteByPrimaryKey(Long orderId);
 

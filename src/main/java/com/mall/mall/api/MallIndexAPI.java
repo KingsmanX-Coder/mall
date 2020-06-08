@@ -15,6 +15,8 @@ import com.mall.mall.common.Constants;
 import com.mall.mall.common.IndexConfigTypeEnum;
 import com.mall.mall.service.MallCarouselService;
 import com.mall.mall.service.MallIndexConfigService;
+import com.mall.mall.util.Result;
+import com.mall.mall.util.ResultGenerator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

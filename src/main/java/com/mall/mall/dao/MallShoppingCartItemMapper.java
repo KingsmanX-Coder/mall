@@ -8,6 +8,8 @@
 
 package com.mall.mall.dao;
 
+import com.mall.mall.entity.MallShoppingCartItem;
+import com.mall.mall.util.PageQueryUtil;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

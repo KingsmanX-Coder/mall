@@ -8,7 +8,11 @@
 
 package com.mall.mall.dao;
 
+import com.mall.mall.entity.MallUser;
+import com.mall.mall.util.PageQueryUtil;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface MallUserMapper {
     int deleteByPrimaryKey(Long userId);
