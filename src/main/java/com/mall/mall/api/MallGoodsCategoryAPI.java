@@ -12,6 +12,8 @@ package com.mall.mall.api;
 import com.mall.mall.api.vo.MallIndexCategoryVO;
 import com.mall.mall.common.MallException;
 import com.mall.mall.common.ServiceResultEnum;
+import com.mall.mall.util.Result;
+import com.mall.mall.util.ResultGenerator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.util.CollectionUtils;

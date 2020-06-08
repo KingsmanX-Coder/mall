@@ -21,6 +21,10 @@ import com.mall.mall.entity.MallUserAddress;
 import com.mall.mall.service.MallOrderService;
 import com.mall.mall.service.MallShoppingCartService;
 import com.mall.mall.service.MallUserAddressService;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
+import com.mall.mall.util.Result;
+import com.mall.mall.util.ResultGenerator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -128,7 +132,7 @@ public class MallOrderAPI {
     @GetMapping("/paySuccess")
     @ApiOperation(value = "模拟支付成功回调的接口", notes = "传参为订单号和支付方式")
     public Result paySuccess(@ApiParam(value = "订单号") @RequestParam("orderNo") String orderNo, @ApiParam(value = "支付方式") @RequestParam("payType") int payType) {
-        String payResult = newBeeMallOrderService.paySuccess(orderNo, payType);
+        String payResult = MallOrderService.paySuccess(orderNo, payType);
         if (ServiceResultEnum.SUCCESS.getResult().equals(payResult)) {
             return ResultGenerator.genSuccessResult();
         } else {

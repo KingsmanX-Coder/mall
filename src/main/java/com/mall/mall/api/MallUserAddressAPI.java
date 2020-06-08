@@ -8,14 +8,26 @@
 
 package com.mall.mall.api;
 
+import com.mall.mall.api.param.SaveMallUserAddressParam;
+import com.mall.mall.api.param.UpdateMallUserAddressParam;
+import com.mall.mall.api.vo.MallUserAddressVO;
+import com.mall.mall.common.ServiceResultEnum;
+import com.mall.mall.config.annotation.TokenToMallUser;
+import com.mall.mall.entity.MallUser;
+import com.mall.mall.entity.MallUserAddress;
+import com.mall.mall.service.MallUserAddressService;
+import com.mall.mall.util.BeanUtil;
+import com.mall.mall.util.Result;
+import com.mall.mall.util.ResultGenerator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
-@Api(value = "v1", tags = "6.新蜂商城个人地址相关接口")
+@Api(value = "v1", tags = "6.商城个人地址相关接口")
 @RequestMapping("/api/v1")
 
 public class MallUserAddressAPI {

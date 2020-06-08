@@ -8,6 +8,20 @@
 
 package com.mall.mall.api;
 
+import com.mall.mall.api.param.SaveCartItemParam;
+import com.mall.mall.api.param.UpdateCartItemParam;
+import com.mall.mall.api.vo.MallShoppingCartItemVO;
+import com.mall.mall.common.Constants;
+import com.mall.mall.common.MallException;
+import com.mall.mall.common.ServiceResultEnum;
+import com.mall.mall.config.annotation.TokenToMallUser;
+import com.mall.mall.entity.MallShoppingCartItem;
+import com.mall.mall.entity.MallUser;
+import com.mall.mall.service.MallShoppingCartService;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
+import com.mall.mall.util.Result;
+import com.mall.mall.util.ResultGenerator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.util.CollectionUtils;
@@ -16,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -24,7 +39,7 @@ import java.util.Map;
 public class MallShoppingCartAPI {
 
     @Resource
-private MallShoppingCartService MallShoppingCartService;
+private com.mall.mall.service.MallShoppingCartService MallShoppingCartService;
 
     @GetMapping("/shop-cart/page")
     @ApiOperation(value = "购物车列表(每页默认5条)", notes = "传参为页码")

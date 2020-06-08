@@ -17,7 +17,10 @@ import com.mall.mall.common.ServiceResultEnum;
 import com.mall.mall.config.annotation.TokenToMallUser;
 import com.mall.mall.entity.MallGoods;
 import com.mall.mall.entity.MallUser;
-import com.mall.mall.service.MallGoodsService;
+import com.mall.mall.util.BeanUtil;
+import com.mall.mall.util.PageQueryUtil;
+import com.mall.mall.util.PageResult;
+import com.mall.mall.util.ResultGenerator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -84,7 +87,7 @@ public class MallGoodsAPI {
         if (goodsId < 1) {
             return ResultGenerator.genFailResult("参数异常");
         }
-        MallGoods goods = MallGoodsService.getNewBeeMallGoodsById(goodsId);
+        MallGoods goods = MallGoodsService.getMallGoodsById(goodsId);
         if (goods == null) {
             return ResultGenerator.genFailResult("参数异常");
         }

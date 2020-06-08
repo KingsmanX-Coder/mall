@@ -8,21 +8,36 @@
 
 package com.mall.mall.api;
 
+import com.mall.mall.api.param.MallUserLoginParam;
+import com.mall.mall.api.param.MallUserRegisterParam;
+import com.mall.mall.api.param.MallUserUpdateParam;
+import com.mall.mall.api.vo.MallUserVO;
+import com.mall.mall.common.Constants;
+import com.mall.mall.common.ServiceResultEnum;
+import com.mall.mall.config.annotation.TokenToMallUser;
+import com.mall.mall.entity.MallUser;
+import com.mall.mall.service.MallUserService;
+import com.mall.mall.util.BeanUtil;
+import com.mall.mall.util.NumberUtil;
+import com.mall.mall.util.Result;
+import com.mall.mall.util.ResultGenerator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 @RestController
 @Api(value = "v1", tags = "2.用户操作相关接口")
 @RequestMapping("/api/v1")
 public class MallPersonalAPI {
     @Resource
-    private MallUserService MallUserService;
+    private com.mall.mall.service.MallUserService MallUserService;
 
     private static final Logger logger = LoggerFactory.getLogger(MallPersonalAPI.class);
 
