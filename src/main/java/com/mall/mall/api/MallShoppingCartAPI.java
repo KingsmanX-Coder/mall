@@ -77,8 +77,11 @@ private com.mall.mall.service.MallShoppingCartService MallShoppingCartService;
 
     @PutMapping("/shop-cart")
     @ApiOperation(value = "修改购物项数据", notes = "传参为购物项id、数量")
-    public Result updateNewBeeMallShoppingCartItem(@RequestBody UpdateCartItemParam updateCartItemParam,
-                                                   @TokenToMallUser MallUser loginMallUser) {
+    public Result updateMallShoppingCartItem(
+
+            @RequestBody UpdateCartItemParam updateCartItemParam,
+
+            @TokenToMallUser MallUser loginMallUser) {
         String updateResult = MallShoppingCartService.updateMallCartItem(updateCartItemParam, loginMallUser.getUserId());
         //修改成功
         if (ServiceResultEnum.SUCCESS.getResult().equals(updateResult)) {
