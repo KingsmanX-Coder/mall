@@ -79,7 +79,7 @@ public class MallCategoryServiceImpl implements MallCategoryService {
 
     @Override
     public List<MallIndexCategoryVO> getCategoriesForIndex() {
-        List<MallIndexCategoryVO> newBeeMallIndexCategoryVOS = new ArrayList<>();
+        List<MallIndexCategoryVO> MallIndexCategoryVOS = new ArrayList<>();
         //获取一级分类的固定数量的数据
         List<GoodsCategory> firstLevelCategories = goodsCategoryMapper.selectByLevelAndParentIdsAndNumber(Collections.singletonList(0L), MallCategoryLevelEnum.LEVEL_ONE.getLevel(), Constants.INDEX_CATEGORY_NUMBER);
         if (!CollectionUtils.isEmpty(firstLevelCategories)) {
@@ -111,20 +111,20 @@ public class MallCategoryServiceImpl implements MallCategoryService {
                         //根据 parentId 将 thirdLevelCategories 分组
                         Map<Long, List<SecondLevelCategoryVO>> secondLevelCategoryVOMap = secondLevelCategoryVOS.stream().collect(groupingBy(SecondLevelCategoryVO::getParentId));
                         for (GoodsCategory firstCategory : firstLevelCategories) {
-                           MallIndexCategoryVO newBeeMallIndexCategoryVO = new MallIndexCategoryVO();
-                            BeanUtil.copyProperties(firstCategory, newBeeMallIndexCategoryVO);
-                            //如果该一级分类下有数据则放入 newBeeMallIndexCategoryVOS 对象中
+                           MallIndexCategoryVO MallIndexCategoryVO = new MallIndexCategoryVO();
+                            BeanUtil.copyProperties(firstCategory, MallIndexCategoryVO);
+                            //如果该一级分类下有数据则放入 MallIndexCategoryVOS 对象中
                             if (secondLevelCategoryVOMap.containsKey(firstCategory.getCategoryId())) {
                                 //根据一级分类的id取出secondLevelCategoryVOMap分组中的二级级分类list
                                 List<SecondLevelCategoryVO> tempGoodsCategories = secondLevelCategoryVOMap.get(firstCategory.getCategoryId());
-                                newBeeMallIndexCategoryVO.setSecondLevelCategoryVOS(tempGoodsCategories);
-                                newBeeMallIndexCategoryVOS.add(newBeeMallIndexCategoryVO);
+                                MallIndexCategoryVO.setSecondLevelCategoryVOS(tempGoodsCategories);
+                                MallIndexCategoryVOS.add(MallIndexCategoryVO);
                             }
                         }
                     }
                 }
             }
-            return newBeeMallIndexCategoryVOS;
+            return MallIndexCategoryVOS;
         } else {
             return null;
         }

@@ -15,6 +15,11 @@ import java.util.Date;
 
 @Data
 public class MallGoods {
+
+    public Long getGoodsId() {
+        return goodsId;
+    }
+
     private Long goodsId;
 
     private String goodsName;

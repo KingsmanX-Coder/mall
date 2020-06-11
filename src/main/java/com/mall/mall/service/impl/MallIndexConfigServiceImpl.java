@@ -39,8 +39,8 @@ public class MallIndexConfigServiceImpl implements MallIndexConfigService {
         if (!CollectionUtils.isEmpty(indexConfigs)) {
             //取出所有的goodsId
             List<Long> goodsIds = indexConfigs.stream().map(IndexConfig::getGoodsId).collect(Collectors.toList());
-            List<MallGoods> newBeeMallGoods = goodsMapper.selectByPrimaryKeys(goodsIds);
-            MallIndexConfigGoodsVOS = BeanUtil.copyList(newBeeMallGoods, MallIndexConfigGoodsVO.class);
+            List<MallGoods> MallGoods = goodsMapper.selectByPrimaryKeys(goodsIds);
+            MallIndexConfigGoodsVOS = BeanUtil.copyList(MallGoods, MallIndexConfigGoodsVO.class);
             for (MallIndexConfigGoodsVO MallIndexConfigGoodsVO : MallIndexConfigGoodsVOS) {
                 String goodsName = MallIndexConfigGoodsVO.getGoodsName();
                 String goodsIntro = MallIndexConfigGoodsVO.getGoodsIntro();

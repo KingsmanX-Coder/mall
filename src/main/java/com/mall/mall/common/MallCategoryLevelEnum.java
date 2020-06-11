@@ -34,7 +34,7 @@ public enum MallCategoryLevelEnum {
     }
 
     public int getLevel() {
-        return level;
+       return level;
     }
 
     public void setLevel(int level) {

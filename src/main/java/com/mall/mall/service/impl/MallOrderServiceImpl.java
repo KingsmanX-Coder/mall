@@ -29,6 +29,8 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.groupingBy;
+
 @Service
 public class MallOrderServiceImpl implements MallOrderService {
 
@@ -77,8 +79,8 @@ public class MallOrderServiceImpl implements MallOrderService {
             //数据转换 将实体类转成vo
             orderListVOS = BeanUtil.copyList(MallOrders, MallOrderListVO.class);
             //设置订单状态中文显示值
-            for (MallOrderListVO newBeeMallOrderListVO : orderListVOS) {
-                newBeeMallOrderListVO.setOrderStatusString(MallOrderStatusEnum.getMallOrderStatusEnumByStatus(MallOrderListVO.getOrderStatus()).getName());
+            for (MallOrderListVO MallOrderListVO : orderListVOS) {
+                MallOrderListVO.setOrderStatusString(MallOrderStatusEnum.getMallOrderStatusEnumByStatus(MallOrderListVO.getOrderStatus()).getName());
             }
             List<Long> orderIds = MallOrders.stream().map(MallOrder::getOrderId).collect(Collectors.toList());
             if (!CollectionUtils.isEmpty(orderIds)) {
@@ -88,7 +90,7 @@ public class MallOrderServiceImpl implements MallOrderService {
                     //封装每个订单列表对象的订单项数据
                     if (itemByOrderIdMap.containsKey(MallOrderListVO.getOrderId())) {
                         List<MallOrderItem> orderItemListTemp = itemByOrderIdMap.get(MallOrderListVO.getOrderId());
-                        //将NewBeeMallOrderItem对象列表转换成NewBeeMallOrderItemVO对象列表
+                        //将MallOrderItem对象列表转换成MallOrderItemVO对象列表
                         List<MallOrderItemVO> MallOrderItemVOS = BeanUtil.copyList(orderItemListTemp, MallOrderItemVO.class);
                         MallOrderListVO.setMallOrderItemVOS(MallOrderItemVOS);
                     }
@@ -166,7 +168,7 @@ public class MallOrderServiceImpl implements MallOrderService {
             //goodsListNotSelling 对象非空则表示有下架商品
             MallException.fail(goodsListNotSelling.get(0).getGoodsName() + "已下架，无法生成订单");
         }
-        Map<Long, MallGoods> MallGoodsMap = MallGoods.stream().collect(Collectors.toMap(MallGoods::getGoodsId, Function.identity(), (entity1, entity2) -> entity1));
+        Map<Long, MallGoods> MallGoodsMap = MallGoods.stream().collect(Collectors.toMap(mallGoods -> mallGoods.getGoodsId(),Function.identity(),(entity1, entity2) -> entity1));
         //判断商品库存
         for (MallShoppingCartItemVO shoppingCartItemVO : myShoppingCartItems) {
             //查出的商品中不存在购物车中的这条关联商品数据，直接返回错误提醒
@@ -194,7 +196,7 @@ public class MallOrderServiceImpl implements MallOrderService {
                 MallOrder.setOrderNo(orderNo);
                 MallOrder.setUserId(loginMallUser.getUserId());
                 //总价
-                for (MallShoppingCartItemVOMallShoppingCartItemVO : myShoppingCartItems) {
+                for (MallShoppingCartItemVO MallShoppingCartItemVO : myShoppingCartItems) {
                     priceTotal += MallShoppingCartItemVO.getGoodsCount() * MallShoppingCartItemVO.getSellingPrice();
                 }
                 if (priceTotal < 1) {
@@ -213,9 +215,9 @@ public class MallOrderServiceImpl implements MallOrderService {
                     List<MallOrderItem> MallOrderItems = new ArrayList<>();
                     for (MallShoppingCartItemVO MallShoppingCartItemVO : myShoppingCartItems) {
                         MallOrderItem MallOrderItem = new MallOrderItem();
-                        //使用BeanUtil工具类将newBeeMallShoppingCartItemVO中的属性复制到newBeeMallOrderItem对象中
+                        //使用BeanUtil工具类将MallShoppingCartItemVO中的属性复制到MallOrderItem对象中
                         BeanUtil.copyProperties(MallShoppingCartItemVO, MallOrderItem);
-                        //NewBeeMallOrderMapper文件insert()方法中使用了useGeneratedKeys因此orderId可以获取到
+                        //MallOrderMapper文件insert()方法中使用了useGeneratedKeys因此orderId可以获取到
                         MallOrderItem.setOrderId(MallOrder.getOrderId());
                         MallOrderItems.add(MallOrderItem);
                     }

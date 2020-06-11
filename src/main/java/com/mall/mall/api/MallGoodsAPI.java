@@ -8,7 +8,6 @@
 
 package com.mall.mall.api;
 
-
 import com.mall.mall.api.vo.MallGoodsDetailVO;
 import com.mall.mall.api.vo.MallSearchGoodsVO;
 import com.mall.mall.common.Constants;
@@ -17,10 +16,7 @@ import com.mall.mall.common.ServiceResultEnum;
 import com.mall.mall.config.annotation.TokenToMallUser;
 import com.mall.mall.entity.MallGoods;
 import com.mall.mall.entity.MallUser;
-import com.mall.mall.util.BeanUtil;
-import com.mall.mall.util.PageQueryUtil;
-import com.mall.mall.util.PageResult;
-import com.mall.mall.util.ResultGenerator;
+import com.mall.mall.util.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -30,7 +26,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.xml.transform.Result;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

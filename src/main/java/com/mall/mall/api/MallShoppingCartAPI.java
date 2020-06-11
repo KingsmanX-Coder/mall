@@ -17,7 +17,6 @@ import com.mall.mall.common.ServiceResultEnum;
 import com.mall.mall.config.annotation.TokenToMallUser;
 import com.mall.mall.entity.MallShoppingCartItem;
 import com.mall.mall.entity.MallUser;
-import com.mall.mall.service.MallShoppingCartService;
 import com.mall.mall.util.PageQueryUtil;
 import com.mall.mall.util.PageResult;
 import com.mall.mall.util.Result;

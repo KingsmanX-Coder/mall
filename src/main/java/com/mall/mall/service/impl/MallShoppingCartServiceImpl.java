@@ -22,21 +22,22 @@ import com.mall.mall.service.MallShoppingCartService;
 import com.mall.mall.util.BeanUtil;
 import com.mall.mall.util.PageQueryUtil;
 import com.mall.mall.util.PageResult;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.Resource;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+
 @Service
 public class MallShoppingCartServiceImpl implements MallShoppingCartService {
 
-    @Autowired
+    @Resource
     private MallShoppingCartItemMapper MallShoppingCartItemMapper;
 
-    @Autowired
+    @Resource
     private MallGoodsMapper MallGoodsMapper;
 
     @Override
@@ -46,9 +47,9 @@ public class MallShoppingCartServiceImpl implements MallShoppingCartService {
             //已存在则修改该记录
             MallException.fail(ServiceResultEnum.SHOPPING_CART_ITEM_EXIST_ERROR.getResult());
         }
-        MallGoods newBeeMallGoods = MallGoodsMapper.selectByPrimaryKey(saveCartItemParam.getGoodsId());
+        MallGoods MallGoods = MallGoodsMapper.selectByPrimaryKey(saveCartItemParam.getGoodsId());
         //商品为空
-        if (newBeeMallGoods == null) {
+        if (MallGoods == null) {
             return ServiceResultEnum.GOODS_NOT_EXIST.getResult();
         }
         int totalItem = MallShoppingCartItemMapper.selectCountByUserId(userId);
@@ -74,7 +75,7 @@ public class MallShoppingCartServiceImpl implements MallShoppingCartService {
     }
 
     @Override
-    public String updateNewBeeMallCartItem(UpdateCartItemParam updateCartItemParam, Long userId) {
+    public String updateMallCartItem(UpdateCartItemParam updateCartItemParam, Long userId) {
         MallShoppingCartItem MallShoppingCartItemUpdate = MallShoppingCartItemMapper.selectByPrimaryKey(updateCartItemParam.getCartItemId());
         if (MallShoppingCartItemUpdate == null) {
             return ServiceResultEnum.DATA_NOT_EXIST.getResult();
@@ -97,7 +98,8 @@ public class MallShoppingCartServiceImpl implements MallShoppingCartService {
 
     @Override
     public MallShoppingCartItem getMallCartItemById(Long MallShoppingCartItemId) {
-        MallShoppingCartItem MallShoppingCartItem = MallShoppingCartItemMapper.selectByPrimaryKeyMallShoppingCartItemId);
+
+        MallShoppingCartItem MallShoppingCartItem = MallShoppingCartItemMapper.selectByPrimaryKey(MallShoppingCartItemId);
         if (MallShoppingCartItem == null) {
             MallException.fail(ServiceResultEnum.DATA_NOT_EXIST.getResult());
         }
@@ -105,8 +107,8 @@ public class MallShoppingCartServiceImpl implements MallShoppingCartService {
     }
 
     @Override
-    public Boolean deleteById(Long newBeeMallShoppingCartItemId) {
-        return MallShoppingCartItemMapper.deleteByPrimaryKey(newBeeMallShoppingCartItemId) > 0;
+    public Boolean deleteById(Long MallShoppingCartItemId) {
+        return MallShoppingCartItemMapper.deleteByPrimaryKey(MallShoppingCartItemId) > 0;
     }
 
     @Override
@@ -117,7 +119,7 @@ public class MallShoppingCartServiceImpl implements MallShoppingCartService {
     }
 
     @Override
-    public List<MallShoppingCartItemVO> getCartItemsForSettle(List<Long> cartItemIds, Long newBeeMallUserId) {
+    public List<MallShoppingCartItemVO> getCartItemsForSettle(List<Long> cartItemIds, Long MallUserId) {
         List<MallShoppingCartItemVO> MallShoppingCartItemVOS = new ArrayList<>();
         if (CollectionUtils.isEmpty(cartItemIds)) {
             MallException.fail("购物项不能为空");
@@ -146,7 +148,7 @@ public class MallShoppingCartServiceImpl implements MallShoppingCartService {
             List<MallGoods> MallGoods = MallGoodsMapper.selectByPrimaryKeys(MallGoodsIds);
             Map<Long, MallGoods> MallGoodsMap = new HashMap<>();
             if (!CollectionUtils.isEmpty(MallGoods)) {
-                MallGoodsMap = MallGoods.stream().collect(Collectors.toMap(MallGoods::getGoodsId, Function.identity(), (entity1, entity2) -> entity1));
+                MallGoodsMap = MallGoods.stream().collect(Collectors.toMap(mallGoods -> mallGoods.getGoodsId(),Function.identity(),(entity1, entity2) -> entity1));
             }
             for (MallShoppingCartItem MallShoppingCartItem : MallShoppingCartItems) {
                 MallShoppingCartItemVO MallShoppingCartItemVO = new MallShoppingCartItemVO();
